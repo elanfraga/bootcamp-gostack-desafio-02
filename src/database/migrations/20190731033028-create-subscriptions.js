@@ -1,22 +1,22 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTalbe('subscriptions', {
+    return queryInterface.createTable('subscriptions', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
       },
-      meetup_it: {
+      meetup_id: {
         type: Sequelize.INTEGER,
         references: { model: 'meetups', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        allowNull: true,
+        allowNull: false,
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'user', key: 'id' },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         allowNull: false,
